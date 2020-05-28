@@ -1,0 +1,45 @@
+﻿@model WhatsUp.Models.Input_Models.ContactModel
+
+@{
+    ViewBag.Title = "Edit contact";
+}
+
+<h2>Edit @Model.ContactName </h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group"><b>
+            @Html.DisplayNameFor(model => model.ContactName) </b><br />
+            <div class="col">
+                @Html.EditorFor(model => model.ContactName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContactName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group"><b>
+            @Html.DisplayNameFor(model => model.MobileNumber) </b><br />
+            <div class="col">
+                @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to My Contacts", "Index", "Contact", new { @class = "stickToBottom" })
+</div>

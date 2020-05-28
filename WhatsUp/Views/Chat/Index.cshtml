@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WhatsUp.Models.View_Models.ChatMessage>
+
+@{
+    ViewBag.Title = "Chats";
+}
+
+<h2>My Chats</h2>
+
+<p>
+    @Html.ActionLink("Add new chat", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherAccountContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message.TextMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message.MessageSent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherAccountContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastSender):
+            @Html.DisplayFor(modelItem => item.Message.TextMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message.MessageSent)
+        </td>
+        <td>
+            @Html.ActionLink("Chat", "ViewChat", new { chatId = item.Message.ChatId }) |
+            @Html.ActionLink("Remove", "Remove", new { chatId = item.Message.ChatId })
+        </td>
+    </tr>
+}
+
+</table>

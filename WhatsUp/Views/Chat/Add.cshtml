@@ -1,0 +1,51 @@
+﻿@model WhatsUp.Models.Input_Models.AddChatModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Chat</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <p>
+            You can only chat with one of your contacts. <br>
+            Do you want to add another contact? Click @Html.ActionLink("here", "Add", "Contact")
+        </p><br /><br />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col">
+                <b>
+                    @Html.LabelFor(m => m.SelectedContact, "Select a contact:")
+                </b><br />
+
+                @Html.DropDownListFor(m => m.SelectedContact,
+                   new SelectList(Model.Contacts, "OwnerAccountId", "ContactName"),
+                   new { selectedContact = Model.SelectedContact})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InitialMessage, "New message", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col">
+                @Html.EditorFor(model => model.InitialMessage, new { htmlAttributes = new { @class = "form-control" } }) 
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <div class="col">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Chat", new { @class = "stickToBottom" })
+</div>

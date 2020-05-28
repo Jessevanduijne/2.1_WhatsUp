@@ -1,0 +1,61 @@
+﻿@model WhatsUp.Models.Input_Models.AddGroupModel
+
+@{
+    ViewBag.Title = "Add Group";
+}
+
+<h2>Add Group</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    <p>
+        You can only add contacts to your group that have an account. <br>
+        Do you want to add another contact? Click @Html.ActionLink("here", "Add", "Contact")
+    </p><br />
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <div class="col">
+            <p>Select<b> contacts</b>:<br />
+            <i><small> Hold CTRL to select multiple contacts </small></i><br /></p>
+            @Html.ListBoxFor(m => m.SelectedContacts, new SelectList(Model.Contacts, "OwnerAccountId", "ContactName"), new { @class = "addGroupSelection" })
+        </div>
+    </div><br />
+
+    <div class="form-group">
+        <p>Give your group a<b> name</b>:</p>
+        <div class="col">
+            @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
+        </div>
+    </div><br />
+
+    <div class="form-group">
+        <p>Send your group an <b>initial message</b>:</p>
+        <div class="col">
+            @Html.EditorFor(model => model.InitialMessage, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.InitialMessage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <div class="form-group">
+        <div class="col">
+            <input type="submit" value="Add" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

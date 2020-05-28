@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WhatsUp.Models.Domain_Models.Account>
+
+@{
+    ViewBag.Title = "PhoneBook";
+}
+
+<h2>The Phone Directory</h2>
+<hr />
+<p>You can only send chat to contacts that already have an account. <br /> Below are all the registered accounts listed:</p>
+
+<div id="phoneBookTable">
+    <table class="table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
+@Html.ActionLink("Go back", "Add", "Contact", new { @class = "stickToBottom" })

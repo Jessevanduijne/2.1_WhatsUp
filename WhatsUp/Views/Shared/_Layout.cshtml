@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @ViewBag.Title - WhatsUp </title>
+    @Styles.Render("~/Content/style.css")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <section id="block">
+        <section id="header">
+            <h1>
+                WhatsUp
+            </h1>
+        </section>
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Contact")
+            {
+                <section class="navbar1">
+                    <button class="highlighted" onclick="location.href='@Url.Action("Index", "Contact")'"> Contacts </button><!--
+                 --><button class="navbutton" onclick="location.href='@Url.Action("Index", "Chat")'"> Chats </button><!--
+                 --><button class="navbutton" onclick="location.href='@Url.Action("Index", "Group")'"> Groups </button>
+                </section>
+            }
+            else if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Chat")
+            {
+                <section class="navbar1">
+                    <button class="navbutton" onclick="location.href='@Url.Action("Index", "Contact")'"> Contacts </button><!--
+                 --><button class="highlighted" onclick="location.href='@Url.Action("Index", "Chat")'"> Chats </button><!--
+                 --><button class="navbutton" onclick="location.href='@Url.Action("Index", "Group")'"> Groups </button>
+                </section>
+            }
+
+            else if(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Group")
+            {
+                <section class="navbar1">
+                    <button class="navbutton" onclick="location.href='@Url.Action("Index", "Contact")'"> Contacts </button><!--
+                 --><button class="navbutton" onclick="location.href='@Url.Action("Index", "Chat")'"> Chats </button><!--
+                 --><button class="highlighted" onclick="location.href='@Url.Action("Index", "Group")'"> Groups </button>
+                </section>
+            }
+        }
+        @RenderBody()
+
+        <br />
+        <p id="stickToBottom"> 
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Logout", "LogOut", "Account")
+        }
+        </p>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

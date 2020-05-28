@@ -1,0 +1,29 @@
+﻿@model WhatsUp.Models.Input_Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<br />
+<h2> Please fill in your details below: </h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(x => x.MobileNumber, new { @class = "registerinputfield", placeholder = "Mobile number" })
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "registerinputfield2", placeholder = "First name" })
+    @Html.TextBoxFor(x => x.LastName, new { @class = "registerinputfield3", placeholder = "Last name" })
+    @Html.PasswordFor(x => x.Password, new { @class = "registerinputfield", placeholder = "Password" })
+    @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "registerinputfield", placeholder = "Re-enter password" })
+
+    <button type="submit" class="registerButton">Register now</button>
+}
+
+@Html.ActionLink("Back to login", "Login")
+<br><br><br>
+
+<footer>
+    <img src="@Url.Content("~/Content/img/logo.png")"><br>
+    © @DateTime.Now.Year Jesse van Duijne <br>
+    Inholland Haarlem
+</footer>

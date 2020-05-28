@@ -1,0 +1,39 @@
+﻿@model WhatsUp.Models.Domain_Models.Contact
+
+@{
+    ViewBag.Title = "Remove";
+}
+
+<h2>Remove @Model.ContactName</h2>
+<div>
+    <hr />
+    <h5><i>Are you sure?</i></h5>
+    <p>Every chat you have with this contact will be deleted too.</p><br />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> <br /><br /><br />
+            @Html.ActionLink("Back to List", "Index", "Contact", new { @class = "stickToBottom" })
+        </div>
+    }
+</div>

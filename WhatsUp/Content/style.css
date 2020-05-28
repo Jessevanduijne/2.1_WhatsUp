@@ -1,0 +1,220 @@
+/* shared section: */
+body {
+    background-color: #444444 !important;
+    font-family: "arial", "sans-serif";
+}
+
+h1 {
+    padding: 20px;
+    font-size: 48px !important;
+}
+
+h2 {
+    font-size: 28px;
+    padding-top: 10px;
+}
+
+input {
+    font-style: italic;
+    font-size: 24px !important;
+    text-align: center;
+    height: 50px;
+    margin-bottom: 10px !important;
+}
+
+::-webkit-input-placeholder {
+    color: #CCCCCC;
+}
+
+button {
+    background-color: #e2e5ff;
+    color: #000066 !important;
+    height: 110px;
+}
+
+    button:hover {
+        text-decoration: none;
+    }
+
+#header {
+    text-align: center;
+    background-color: #111c7c;
+    color: white;
+    height: 100px;
+}
+
+#block {
+    margin-top: 3% !important;
+    margin: auto;
+    padding-bottom: 50px;
+    text-align: center;
+    width: 800px;
+    min-height: 800px;
+    background-color: white;
+    position: relative;
+}
+
+.stickToBottom {
+    text-align: center;
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+    width: 100%;
+}
+
+#stickToBottom {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
+}
+
+#logoutButton { /* currently unused */
+    border: 1px solid black;
+    background-color: white;
+    padding: 5px;
+    color: #111c7c;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.navbar1 {
+    width: 100%;
+    background-color: #e2e5ff;
+    height: 50px;
+}
+
+.navbutton {
+    width: 33.33%;
+    display: inline-block;
+    border-radius: 25px;
+    border: none;
+    height: 50px;
+    background-color: #e2e5ff;
+}
+
+.highlighted {
+    width: 33.33%;
+    display: inline-block;
+    border-radius: 25px;
+    border: none;
+    height: 50px;
+    background-color: #bcd5ff;
+    text-decoration: underline;
+}
+
+/* index section: */
+#textballoon {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#balloontext {
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}
+
+#balloonimg {
+    height: 150px;
+    width: 650px;
+}
+
+.logininput {
+    width: 600px;
+    margin: 0 0 10px 100px !important;
+}
+
+#loginButton {
+    width: 600px;
+    font-size: 50px;
+    margin-left: 100px !important;
+}
+
+.registerButton {
+    width: 600px;
+    font-size: 36px;
+}
+
+/* Register section: */
+.registerinputfield {
+    width: 600px;
+}
+
+.registerinputfield2 {
+    display: inline-block;
+    width: 295px !important;
+}
+
+.registerinputfield3 {
+    display: inline-block;
+    width: 295px !important;
+    margin-left: 10px;
+}
+
+/* Validion messages in Login and Register views */
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.display-label,
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field,
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+    .text-box.multi-line {
+        height: 6.5em;
+    }
+
+.tri-state {
+    width: 6em;
+}
+
+/* PhoneBook page:*/
+#phoneBookTable {
+    margin-left: 280px;
+}
+
+#phoneBookTable th {
+    padding: 10px;
+}
+
+/* Add group page*/
+.addGroupSelection {
+    width: 100% !important;
+    text-align: center;
+}
+
+.form-group p {
+    margin-bottom: 5px !important;
+}

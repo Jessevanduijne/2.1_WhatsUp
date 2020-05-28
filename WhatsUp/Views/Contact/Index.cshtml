@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WhatsUp.Models.Domain_Models.Contact>
+
+@{
+    ViewBag.Title = "Contacts";
+}
+
+<h2>My Contacts</h2>
+
+<p>
+    @Html.ActionLink("Add new contact", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { contactId = item.ContactId }) |
+                @Html.ActionLink("Remove", "Remove", new { contactId = item.ContactId })
+            </td>
+        </tr>
+    }
+</table>
+

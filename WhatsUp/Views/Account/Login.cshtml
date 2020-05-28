@@ -1,0 +1,46 @@
+﻿@model WhatsUp.Models.Input_Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<section id="index">
+    <section id="textballoon">
+        <img id="balloonimg" src="@Url.Content("~/Content/img/textballoon.jpg")">
+        <h2 id="balloontext"> See <b>what's up</b> by logging <br /> into the application! </h2>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm())
+            {
+                <div class="col">
+                    <div class="row">
+                        @Html.TextBoxFor(x => x.MobileNumber, new { @class = "logininput", placeholder = "Mobile number" })
+                        @Html.ValidationMessageFor(x => x.MobileNumber, "", new { @class = "logininput" }) @*The validation message is described in the LoginModel input class*@
+                    </div>
+
+                    <div class="row">
+                        @Html.PasswordFor(x => x.Password, new { @class = "logininput", placeholder = "Password" })
+                        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "logininput" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <button type="submit" id="loginButton"><b>Log in</b></button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div><br>
+
+    <h2> Do you not have an account yet? </h2>
+    <button class="registerButton" onclick="location.href='@Url.Action("Register", "Account")'">Register now</button>
+</section><br>
+
+<footer>
+    <img src="@Url.Content("~/Content/img/logo.png")"><br />
+    © @DateTime.Now.Year Jesse van Duijne <br> Inholland Haarlem
+</footer>
+
+

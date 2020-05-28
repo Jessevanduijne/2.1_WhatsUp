@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WhatsUp.Models.View_Models.GroupMessageModel>
+
+@{
+    ViewBag.Title = "Groups";
+}
+
+<h2>My Groups</h2>
+
+<p>
+    @Html.ActionLink("Add New Group", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupMessage.Group.GroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupMessage.MessageSent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupMessage.Group.GroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sender):
+            @Html.DisplayFor(modelItem => item.GroupMessage.TextMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupMessage.MessageSent)
+        </td>
+        <td>
+            @Html.ActionLink("Chat", "ViewChat", new { groupId = item.GroupMessage.GroupId }) |
+            @Html.ActionLink("Remove", "Remove", new { groupId = item.GroupMessage.GroupId })
+        </td>
+    </tr>
+}
+
+</table>
